@@ -841,16 +841,18 @@ document.getElementsByClassName('gcd-gl-btn')[0].className += ' fa fa-search';
 
 //layer search
 
-var searchLayer = new SearchLayer({
-    layer: lyr__2024_8,
-    colName: 'номер',
-    zoom: 10,
-    collapsed: true,
-    map: map
-});
-map.addControl(searchLayer);
-document.getElementsByClassName('search-layer')[0].getElementsByTagName('button')[0].className += ' fa fa-binoculars';
-document.getElementsByClassName('search-layer-input-search')[0].placeholder = 'Search feature ...';
+if (typeof lyr__2024_8 !== 'undefined') {
+    var searchLayer = new SearchLayer({
+        layer: lyr__2024_8,
+        colName: 'номер',
+        zoom: 10,
+        collapsed: true,
+        map: map
+    });
+    map.addControl(searchLayer);
+    document.getElementsByClassName('search-layer')[0].getElementsByTagName('button')[0].className += ' fa fa-binoculars';
+    document.getElementsByClassName('search-layer-input-search')[0].placeholder = 'Search feature ...';
+}
     
 
 //scalebar
