@@ -21,7 +21,7 @@ var wms_layers = [];
             
             source: new ol.source.XYZ({
     attributions: ' &middot; <a href="https://www.openstreetmap.org/copyright">© OpenStreetMap contributors, CC-BY-SA</a>',
-                url: 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'
+                url: 'https://tile.openstreetmap.org/{z}/{x}/{y}.png'
             })
         });
 var lyr_ndvi_25042025_2 = new ol.layer.Image({
@@ -77,9 +77,9 @@ var lyr_ndvi_25042025_5 = new ol.layer.Vector({
                 popuplayertitle: "ndvi_25042025",
                 interactive: true,
     title: 'ndvi_25042025<br />\
-    <img src="styles/legend/ndvi_25042025_5_0.png" /> 0 - 0,2<br />\
-    <img src="styles/legend/ndvi_25042025_5_1.png" /> 0,2 - 0,4<br />\
-    <img src="styles/legend/ndvi_25042025_5_2.png" /> 0,4 - 0,6<br />'
+    <img src="./styles/legend/ndvi_25042025_5_0.png" /> 0 - 0,2<br />\
+    <img src="./styles/legend/ndvi_25042025_5_1.png" /> 0,2 - 0,4<br />\
+    <img src="./styles/legend/ndvi_25042025_5_2.png" /> 0,4 - 0,6<br />'
         });
 var format_ndvi_14072025_6 = new ol.format.GeoJSON();
 var features_ndvi_14072025_6 = format_ndvi_14072025_6.readFeatures(json_ndvi_14072025_6, 
@@ -95,9 +95,9 @@ var lyr_ndvi_14072025_6 = new ol.layer.Vector({
                 popuplayertitle: "ndvi_14072025",
                 interactive: true,
     title: 'ndvi_14072025<br />\
-    <img src="styles/legend/ndvi_14072025_6_0.png" /> 0 - 0,2<br />\
-    <img src="styles/legend/ndvi_14072025_6_1.png" /> 0,2 - 0,4<br />\
-    <img src="styles/legend/ndvi_14072025_6_2.png" /> 0,4 - 0,6<br />'
+    <img src="./styles/legend/ndvi_14072025_6_0.png" /> 0 - 0,2<br />\
+    <img src="./styles/legend/ndvi_14072025_6_1.png" /> 0,2 - 0,4<br />\
+    <img src="./styles/legend/ndvi_14072025_6_2.png" /> 0,4 - 0,6<br />'
         });
 var format_ndvi_12092025_7 = new ol.format.GeoJSON();
 var features_ndvi_12092025_7 = format_ndvi_12092025_7.readFeatures(json_ndvi_12092025_7, 
@@ -113,9 +113,9 @@ var lyr_ndvi_12092025_7 = new ol.layer.Vector({
                 popuplayertitle: "ndvi_12092025",
                 interactive: true,
     title: 'ndvi_12092025<br />\
-    <img src="styles/legend/ndvi_12092025_7_0.png" /> 0 - 0,2<br />\
-    <img src="styles/legend/ndvi_12092025_7_1.png" /> 0,2 - 0,4<br />\
-    <img src="styles/legend/ndvi_12092025_7_2.png" /> 0,4 - 0,6<br />'
+    <img src="./styles/legend/ndvi_12092025_7_0.png" /> 0 - 0,2<br />\
+    <img src="./styles/legend/ndvi_12092025_7_1.png" /> 0,2 - 0,4<br />\
+    <img src="./styles/legend/ndvi_12092025_7_2.png" /> 0,4 - 0,6<br />'
         });
 var format__2024_8 = new ol.format.GeoJSON();
 var features__2024_8 = format__2024_8.readFeatures(json__2024_8, 
@@ -130,7 +130,7 @@ var lyr__2024_8 = new ol.layer.Vector({
                 style: style__2024_8,
                 popuplayertitle: "АХК_2024",
                 interactive: true,
-                title: '<img src="styles/legend/_2024_8.png" /> АХК_2024'
+                title: '<img src="./styles/legend/_2024_8.png" /> АХК_2024'
             });
 var group__2025 = new ol.layer.Group({
                                 layers: [lyr_ndvi_25042025_5,lyr_ndvi_14072025_6,lyr_ndvi_12092025_7,],
