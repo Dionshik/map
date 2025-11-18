@@ -7,6 +7,7 @@
         <meta name="mobile-web-app-capable" content="yes">
         <meta name="apple-mobile-web-app-capable" content="yes">
         <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link rel="stylesheet" href="resources/fontawesome-all.min.css">
         <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
         <link rel="stylesheet" type="text/css" href="resources/ol3-search-layer.min.css">
@@ -14,35 +15,174 @@
         <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
         <link rel="stylesheet" href="./resources/qgis2web.css">
         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+        :root {
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #0f172a;
+        }
         html, body {
-            background-color: #ffffff;
-        }
-        .ol-control > * {
-            background-color: #f8f8f8!important;
-            color: #444444!important;
-            border-radius: 0px;
-        }
-        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
-            color: #444444!important;
-        }
-        .search-layer-input-search {
-            background-color: #f8f8f8!important;
-        }
-        .ol-control > *:focus, .ol-control >*:hover {
-            background-color: rgba(248, 248, 248, 0.7)!important;
-        } 
-        .ol-control {
-            background-color: rgba(255,255,255,.4) !important;
-            padding: 2px !important;
-        } 
-        </style>
-
-        <style>
-        html, body, #map {
             width: 100%;
             height: 100%;
             padding: 0;
             margin: 0;
+            background: radial-gradient(circle at 20% 20%, #0f172a 0%, #020617 65%);
+            color: #0f172a;
+        }
+        #map {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            isolation: isolate;
+        }
+        .ol-control > * {
+            background-color: rgba(15, 23, 42, 0.85)!important;
+            color: #f8fafc!important;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 20px 35px rgba(2, 6, 23, 0.35);
+            backdrop-filter: blur(6px);
+        }
+        .ol-control > *:focus, .ol-control > *:hover {
+            background-color: rgba(15, 23, 42, 0.7)!important;
+        }
+        .ol-control {
+            background-color: transparent !important;
+            padding: 2px !important;
+        }
+        .map-ui {
+            position: absolute;
+            top: 32px;
+            left: 32px;
+            width: min(360px, calc(100% - 64px));
+            background: rgba(248, 250, 252, 0.95);
+            border-radius: 24px;
+            padding: 24px;
+            box-shadow: 0 25px 45px rgba(2,6,23,0.35);
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            backdrop-filter: blur(14px);
+            z-index: 10;
+        }
+        .map-ui__section {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .map-ui__section--header {
+            gap: 8px;
+        }
+        .map-ui__subtitle {
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            font-size: 0.72rem;
+            color: #475569;
+            margin: 0;
+        }
+        .map-ui h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin: 0;
+        }
+        .map-ui__actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .map-chip {
+            border: none;
+            border-radius: 999px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            background: rgba(15,23,42,0.08);
+            color: #0f172a;
+            cursor: pointer;
+            transition: background 0.2s ease, transform 0.2s ease;
+        }
+        .map-chip:hover, .map-chip.is-active {
+            background: #0f172a;
+            color: #f8fafc;
+            transform: translateY(-1px);
+        }
+        .map-ui__label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0f172a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        input[type="range"] {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 100%;
+            height: 6px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, #0ea5e9, #10b981);
+            outline: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0f172a;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(15,23,42,0.25);
+        }
+        input[type="range"]::-moz-range-thumb {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #0f172a;
+            border: 2px solid #ffffff;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(15,23,42,0.25);
+        }
+        .layer-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .layer-pill {
+            border: 1px solid rgba(15,23,42,0.08);
+            border-radius: 16px;
+            padding: 10px 14px;
+            min-width: 110px;
+            background: rgba(255,255,255,0.85);
+            color: #0f172a;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+        }
+        .layer-pill small {
+            color: #475569;
+            font-size: 0.75rem;
+        }
+        .layer-pill.is-active {
+            border-color: var(--pill-color, #0ea5e9);
+            color: #0f172a;
+            background: rgba(14,165,233,0.12);
+        }
+        .map-ui__label span,
+        [data-opacity-value] {
+            font-weight: 600;
+        }
+        @media (max-width: 768px) {
+            .map-ui {
+                position: absolute;
+                top: 16px;
+                left: 16px;
+                right: 16px;
+                width: auto;
+            }
         }
         </style>
         <title></title>
@@ -53,6 +193,29 @@
                 <a href="#" id="popup-closer" class="ol-popup-closer"></a>
                 <div id="popup-content"></div>
             </div>
+            <aside class="map-ui" aria-label="Панель управления картой">
+                <div class="map-ui__section map-ui__section--header">
+                    <div>
+                        <p class="map-ui__subtitle">Вегетационный мониторинг</p>
+                        <h1>Поля АХК · 2025</h1>
+                    </div>
+                    <div class="map-ui__actions">
+                        <button type="button" class="map-chip" data-action="focus-all">Вся территория</button>
+                        <button type="button" class="map-chip" data-action="focus-latest">Сентябрь 2025</button>
+                    </div>
+                </div>
+                <div class="map-ui__section">
+                    <label for="polygonOpacity" class="map-ui__label">
+                        Прозрачность полей
+                        <span id="polygonOpacityValue" data-opacity-value>80%</span>
+                    </label>
+                    <input type="range" id="polygonOpacity" min="20" max="100" step="1" value="80" aria-label="Прозрачность полей">
+                </div>
+                <div class="map-ui__section">
+                    <span class="map-ui__label">Сравнение периодов</span>
+                    <div class="layer-pills" data-layer-pills></div>
+                </div>
+            </aside>
         </div>
         <script src="resources/qgis2web_expressions.js"></script>
         <script src="resources/polyfills.js"></script>
@@ -68,5 +231,6 @@
         <script src="./layers/layers.js" type="text/javascript"></script> 
         <script src="./resources/Autolinker.min.js"></script>
         <script src="./resources/qgis2web.js"></script>
+        <script src="./resources/map-ui.js"></script>
     </body>
 </html>

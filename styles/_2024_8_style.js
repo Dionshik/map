@@ -9,10 +9,10 @@ var style__2024_8 = function(feature, resolution){
     var value = ""
     var labelText = "";
     size = 0;
-    var labelFont = "6.5px \'Open Sans\', sans-serif";
-    var labelFill = "#2323ff";
-    var bufferColor = "#fafafa";
-    var bufferWidth = 1.0;
+    var labelFont = "11px 'Inter', sans-serif";
+    var labelFill = "#0f172a";
+    var bufferColor = "#ffffff";
+    var bufferWidth = 2.0;
     var textAlign = "left";
     var offsetX = 8;
     var offsetY = 3;
@@ -21,7 +21,8 @@ var style__2024_8 = function(feature, resolution){
         labelText = String(feature.get("номер"));
     }
     var style = [ new ol.style.Style({
-        stroke: new ol.style.Stroke({color: 'rgba(35,35,255,1.0)', lineDash: null, lineCap: 'butt', lineJoin: 'miter', width: 1.748}),
+        stroke: new ol.style.Stroke({color: 'rgba(16,185,129,0.9)', lineDash: null, lineCap: 'round', lineJoin: 'round', width: 2.4}),
+        fill: new ol.style.Fill({color: 'rgba(16,185,129,0.18)'}),
         text: createTextStyle(feature, resolution, labelText, labelFont,
                               labelFill, placement, bufferColor,
                               bufferWidth)
